@@ -1,0 +1,63 @@
+<div class="wrap_video">
+    <video id="video" autoplay="true" loop>
+                <source src="resource/WaterBG.mp4" type="video/mp4"> 
+    </video>
+        <div class="wrap">
+              <div class="entry col-md-3" ng-controller="registrCtrl">
+                    <div class="panel panel-default">
+                     <!--  ng-if='!logFormFlag' -->
+                       <div class="panel-body" >
+                           
+                           <h2>REGISTRATION</h2>
+                           <form name="RegForm" novalidate ng-submit="addUser(newUser)">
+                               <div class="form-group">
+                                   <label for="regname">NAME: </label>
+                                   <input type="text" class="form-control" id="regname" name="regname" ng-minlength='2' ng-model="newUser.regname" required>
+                                   <span class="warmAlert" ng-show="RegForm.regname.$error.minlength">Username is too short.</span>
+                                   <span  class="warmAlert" ng-show="RegForm.regname.$dirty && RegForm.regname.$error.required">Name is required!</span>
+                               </div>
+                               <div class="form-group">
+                                   <label for="regpassword">PASSWORD:</label>
+                                   <input type="password"  class="form-control" id="regpassword" name='regpassword' ng-model="newUser.regpassword" required minlength='6' ng-change="confirm(newUser.repeat_password)">
+                                   <span class="warmAlert" ng-show="RegForm.regpassword.$error.minlength">Password is too short.(minimum length of 6 characters)</span>
+                                   <span  class="warmAlert" ng-show="RegForm.regpassword.$dirty && RegForm.regpassword.$error.required">Password is required!</span>
+                               </div>
+
+                               <!-- or use ng-blur="confirm(newUser.repeat_password)" -->
+                               <!-- ng-model-options="{ updateOn: 'blur'}" -->
+                               <div class="form-group">
+                                   <label for="confpassword">CONFIRM PASSWORD:</label>
+                                   <input type="password"  class="form-control" id="confgpassword" name="confgpassword" 
+                                   ng-model="newUser.repeat_password" required 
+                                   
+                                   ng-change="confirm(newUser.repeat_password)">
+                                   
+                            
+                                   <span class="warmAlert" ng-show="RegForm.confgpassword.$valid&&!getPWCompare()&&RegForm.confgpassword.$dirty">password does not match</span>
+                                   <span class="warmAlert" ng-show="RegForm.confgpassword.$dirty && RegForm.confgpassword.$error.required">Repeat password againe!</span>
+                               </div>
+                              
+                               
+                               <div class="form-group">
+                                <label>EMAIL:</label>
+                                <input name="userEmail" type="email" class="form-control" required ng-model="newUser.email">
+                                <div class="error" ng-show="RegForm.userEmail.$invalid && RegForm.userEmail.$dirty">
+                                    
+                                    <span class="warmAlert" ng-show="RegForm.userEmail.$error.email">
+                                        Please enter a valid email address
+                                    </span>
+                                    <span class="warmAlert" ng-show="RegForm.userEmail.$error.required">
+                                        Please enter a value
+                                    </span>
+                                </div>
+
+
+                              <br>
+                               <a  class="btn btn-default" href="#/"><span class="glyphicon glyphicon-menu-left"></span>Back</a>
+                               <button ng-submit class="btn btn-primary" ng-disabled="RegForm.$invalid">REGISTER NOW</button>
+                           </form>
+                       </div> 
+                    </div>
+              </div>
+        </div>
+</div> 

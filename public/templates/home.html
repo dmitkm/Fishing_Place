@@ -1,0 +1,63 @@
+<nav class="navbar navbar-inverse navbar-fixed-top"> </nav>
+<div class="container-fluid" ng-controller="homeCtrl">
+    <div class="content_wrap row">
+        <div class="content col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <form name="reqForm" ng-submit="" novalidate>
+                        <div class="form-group">
+                            <label for="query">Search:</label>
+                            <input type="text" name="query" id="query" class="form-control" ng-model="yourRequest">
+                            <p class="search_info">//search by type of fishing and fish</p>
+                        </div>
+                    </form>
+                    <div class="items_content">
+                        <div class="col-md-4">
+                            <div class="item_fp">1</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">2</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">3</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">4</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">5</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">6</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">7</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">8</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">9</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item_fp">10</div>
+                        </div>
+
+
+                        <!--<div ng-repeat="fish_place in fish_places"></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="map_wrapper">
+            <div id="map_canvas" class="col-md-6">
+            </div>
+            <div id="new_marker_btn">new Marker</div>
+        </div>
+
+    </div>
+</div>
+<!--
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsxEN8Ro20ON0Cja3nC820e7PZdoTJJPw"
+        async defer></script>-->
