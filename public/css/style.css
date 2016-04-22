@@ -1,6 +1,26 @@
 *{
     margin:0;
     padding: 0;
+
+}
+/*log in*/
+.wrap_0{
+    height: 100vh;
+    text-align: center;
+    background-image: url(../img/bg_main.jpg);
+    background-size: cover;
+    line-height: 100vh;
+}
+.link{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.error{
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
 }
 .wrap_video{
     height: 100%;
@@ -16,7 +36,7 @@
     height: auto;
     width:auto;
     z-index: 1;
-    transform: translateX(-50%) translateY(-50%); 
+    transform: translateX(-50%) translateY(-50%);
 }
 .wrap{
     position: relative;
@@ -36,31 +56,33 @@ h2{
     text-align: center;
 }
 
+.navbar{
+    height: 65px;
 
-
+}
 
 /* home page */
-.content_wrap{
-    margin-top: 50px;
-}
+
 .content{
     height: 100%;
 }
+.avatar{
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    border:2px solid rgba(255,255,255,.6);
+}
+.content_wrap{
+    width: 100%;
+
+}
+
 #map_wrapper{
     position: relative;
 }
 #map_canvas{
-    height: 600px;
-}
-#new_marker_btn{
-    cursor: pointer;
-    /*position: absolute;*/
-   /* left:60px;
-    bottom: 50px;*/
-    background: #db4437;
-    padding: 10px;
-    border-radius: 0 6px 6px 0;
-    /*z-index: 99;*/
+    min-height: 650px;
+
 }
 .search_info{
     color: gray;
@@ -71,7 +93,78 @@ h2{
 }
 .item_fp{
     height: 200px;
-    background: #00e5ff;
+    
     margin-bottom: 5px;
 
+}
+.item_fp  img{
+    width:100%
+}
+.card{
+    padding: 10px;
+}
+.form-group label{
+    margin-bottom: 0;
+}
+.upload{
+    position: relative;
+    padding: 10px;
+    /*margin-right: -150px;*/
+}
+
+.upload-drop-zone{
+    position: relative;
+
+    height: 80px;
+    padding: 5px;
+    border:2px dashed lightgray;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.icon{
+    position: absolute;
+    top:30%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    transform: translateX(-50%) translateY(-50%);
+    transition: all 0.3s;
+}
+.drop-zone-hover{
+    border:2px dashed #56a99d;
+    background: #dbffe7;
+}
+svg{
+    opacity: 0.5;
+}
+.svg-enter{
+    fill: #811C25;
+    opacity: 1;
+}
+.file_input{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    left:50%;
+    bottom: 10%;
+}
+.file_input + label {
+    display: block;
+    width: 100%;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 700;
+}
+.file_input + label >strong{
+    cursor: pointer;
+    color: #5FC6D6;
+    text-decoration: underline;
+}
+.right{
+    float: right;
+    
 }

@@ -1,5 +1,5 @@
 {
-  "host":3000,
+  "port":3030,
   "cookie-secret":"jfgJVF34kjKBDF",
   "mongo":"mongodb://localhost/fp"
 }

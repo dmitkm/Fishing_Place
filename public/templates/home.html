@@ -1,42 +1,126 @@
-<nav class="navbar navbar-inverse navbar-fixed-top"> </nav>
-<div class="container-fluid" ng-controller="homeCtrl">
-    <div class="content_wrap row">
-        <div id="map_wrapper">
-            <div id="map_canvas" class="col-md-12 col-sm-12 col-xs-12">
+<nav class="navbar  navbar-full navbar-dark bg-inverse">
+    <ul>
+        <li>
+            <a class="navbar-link" href="#home">HOME</a>
+        </li>
+    </ul>
+        <div class="pull-md-right pull-sm-right">
+        <span>{{cur_user.username}}</span>
+        <a href="#" ng-click="logout()">Выйти</a>
+        </div>
+</nav>
+
+<div class="main">
+    <div class="menu"></div>
+</div>
+
+
+<div class="wrap-conteiner" ng-controller="homeCtrl">
+    <div class="content_wrap">
+            <div id="map_canvas">
             </div>
-            <div id="new_marker_btn">new Marker</div>
-        </div>
-    </div>
-    <div class="row">
-
-    </div>
-
-        <div class="content col-md-12">
-                    <div class="search col-md-6 col-sm-6 col-xs-12">
-                        <label for="query">Search:</label>
-                        <input type="text" name="query" id="query" class="form-control" ng-model="yourRequest">
-                        <p class="search_info">//search by type of fishing and fish</p>
+            <div class="upload" ng-class="{open:isOpen}">
+                <div class="add_report_toggle"  ng-class="{open:isOpen}" ng-click="toggle()"></div>
+                
+                <h5 class="text-md-center">New fishing report</h5>
+                <form class="fishPlace" id="fishPlace" name="fishPlace"
+                        novalidate ng-submit="addFP(FP)">
+                    <fieldset class="form-group">
+                        <label for="Title">Title:</label>
+                        <input type="text" class="form-control" id="Title" name="title" ng-model="FP.title" required>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="Type">Type of fishing:</label>
+                        <select class="form-control" id="Type" name="Type" required ng-model="FP.type">
+                            <option>Spin fishing</option>
+                            <option>Fly fishing</option>
+                            <option>Float fishing</option>
+                            <option>Feeder fishing</option>
+                        </select>
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="weight">Weight:</label>
+                        <input type="number" step="0.1"  min='0.1' id="weight" name="weight" class="form-control" placeholder="Weight of fish caught...kg" required ng-model="FP.weight">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="date">Data of fishing:</label>
+                        <input type="date" id="date" class="form-control" name="date" required ng-model="FP.date">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="Description">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description your fishing report" required ng-model="FP.description"></textarea>
+                    </fieldset>
+                    <div class="coord">
+                        <span>lan:{{coords.lat|number:2}}</span> <span>lng:{{coords.lng|number:2}}</span><br>
+                        <span style="color:#f29696">*select the location of fishing</span>
                     </div>
-                    <div class="items_content col-md-12 col-sm-12 col-xs-12">
-                        <div class="col-md-4">
-                            <div class="item_fp">1</div>
+                    <div class="upload-drop-zone" dropzone drop-files="dropFiles" loading="loading" 
+                    handle-file='upfiles(files)'>
+                        <div class="search-file">
+                            <div class="icon">
+                                <svg version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 29.978 29.978" style="enable-background:new 0 0 29.978 29.978;" xml:space="preserve">
+                                <path d="M25.462,19.105v6.848H4.515v-6.848H0.489v8.861c0,1.111,0.9,2.012,2.016,2.012h24.967c1.115,0,2.016-0.9,2.016-2.012
+                                                        v-8.861H25.462z"/>
+                                <path d="M14.62,18.426l-5.764-6.965c0,0-0.877-0.828,0.074-0.828s3.248,0,3.248,0s0-0.557,0-1.416c0-2.449,0-6.906,0-8.723
+                                                        c0,0-0.129-0.494,0.615-0.494c0.75,0,4.035,0,4.572,0c0.536,0,0.524,0.416,0.524,0.416c0,1.762,0,6.373,0,8.742
+                                                        c0,0.768,0,1.266,0,1.266s1.842,0,2.998,0c1.154,0,0.285,0.867,0.285,0.867s-4.904,6.51-5.588,7.193
+                                                        C15.092,18.979,14.62,18.426,14.62,18.426z"/>
+                                </svg>
+                            </div>
+                            <div class="wrap_link">
+                                <input type="file" class="file_input" id="file" name="pictures"  data-multiple-count='<counter> files selected' multiple>
+                                <label for="file">
+                                    <span class="file_choice">Drop files here or <strong> browse </strong> to upload.</span>
+                                    <span class="selected"></span>
+                                </label>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="item_fp">2</div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="item_fp">3</div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="item_fp">4</div>
-                        </div>
-
-
-                        <!--<div ng-repeat="fish_place in fish_places"></div>-->
                     </div>
-        </div>
+                    <br>
+                    <button type="submit" class="btn btn-success-outline right" ng-disabled="fishPlace.$invalid">Submit</button>
+                </form>
+                </div>
+            </div>
     </div>
 </div>
-<!--
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsxEN8Ro20ON0Cja3nC820e7PZdoTJJPw"
-        async defer></script>-->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="content col-md-12">
+            <div class=" col-md-12">
+                <div class="search col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-2 col-xs-12">
+                    <form class="form-inline" novalidate>
+                        <label for="query">Search:</label>
+                        <input type="text" name="query" id="query" class="form-control" ng-model="yourRequest" placeholder="search by type of fishing and kind of fish">
+                    </form>
+                </div>
+            </div>
+            <div class="items_content col-md-12 col-sm-12 col-xs-12">
+                 <div class="col-md-4">
+                    <div class="item_fp">
+                        <h3>{{title}}</h3>
+                        <img ng-src="img/uploads/{{pic_name}}">
+                    </div>
+                </div>
+                        <div ng-repeat="fish_place in fish_places"></div>
+            </div>
+            <div class="items_content col-md-4 col-sm-6 xol-xs-12" ng-repeat='post in posts'>
+                    <div class="item_fp">
+                        <div class="preview_wrap">
+                            <div class='title'><span >{{post.title}}</span></div>
+                            <div class="link">
+                                <a href="#/{{post._id}}"></a>
+                                <p>View details</p>
+                            </div>
+                            <img class='image_preview'src="img/uploads/{{post.pictures[0]}}">
+                        </div>
+                        <div class="usef_data">
+                            <span>by</span>
+                            <a href="#profile">{{post.user}}</a>
+                            <span class="date">{{post.date|date}}</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div> 

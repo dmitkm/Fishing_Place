@@ -1,11 +1,26 @@
 {
-  "name": "Fishing Place",
-  "version": "0.0.1",
+  "name": "fishingPlace",
+  "description": "",
+  "main": "",
+  "authors": [
+    "dmitkm <karmazindimka@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/dmitkm/Fishing_Place",
+  "moduleType": [],
+  "private": true,
+  "directory": "public/bower",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "angular": "~1.5.0",
-    "bootstrap": "~3.3.6",
-    "angular-simple-logger": "~0.1.7",
-    "angular-google-maps": "~2.3.2",
-    "lodash": "~4.6.1"
+    "angular": "~1.5.3",
+    "bootstrap": "v4",
+    "lodash": "~4.7.0"
   }
 }

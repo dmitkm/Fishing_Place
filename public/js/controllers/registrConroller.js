@@ -1,30 +1,24 @@
-fp.controller('registrCtrl',  function ($scope) {
-
+fp.controller('registrCtrl',  function ($scope,$rootScope,$http,$location,AuthService,FlashService) {
     $scope.newUser={
-        regname:"",
-        regpassword:"",
-        confpassword:"",
-        email:""
+        regname:     "",
+        regpassword: "",
+        email:       ""
     };
+    //$rootScope.message='';
 
-    $scope.PWCompare=false;
 
-    $scope.confirm=function (repeat_password,$event) {
-        if(angular.isDefined(repeat_password)){
+    $scope.addUser = function(newUser) {
+        AuthService.register(newUser)
+            .then(function (data) {
+                if (data.status) {
+                    $location.url('/login');
+                    FlashService.success(data.status);
+                }
+            })
+            .catch(function (data) {
+                FlashService.error(data.error);
 
-            if(repeat_password==$scope.newUser.regpassword){
-                
-                $scope.PWCompare=true;
-                console.log($scope.PWCompare);
-            }else{
-                $scope.PWCompare=false;
-                console.log($scope.PWCompare);
-            }
-        }
-
-      };
-    $scope.getPWCompare=function(){
-        return $scope.PWCompare;
+            });
     };
 
 });

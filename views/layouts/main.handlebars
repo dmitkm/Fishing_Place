@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="fp">
 <head>
+
     <title>Fishing place</title>
     {{>head}}
 </head>
 <body ng-controller="mainCtrl">
-
+<div class="error alert">{{error}}</div>
 <ng-view></ng-view>
 
 
-<script src="bower/lodash/dist/lodash.min.js"></script>
-<script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoL8w7AEi0sFCm9J0-trIuR-EBx9CCeI"></script>
+
+<!--<script src="//maps.googleapis.com/maps/api/js?sensor=false"></script>-->
 
 </body>
 </html>
