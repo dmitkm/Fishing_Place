@@ -1,5 +1,11 @@
 {
   "port":3030,
   "cookie-secret":"jfgJVF34kjKBDF",
-  "mongo":"mongodb://localhost/fp"
+  "mongo":"mongodb://localhost/fp",
+  "cloudinary":{
+    "name":"dyktfdzxb",
+    "key":"565743988139771",
+    "secret":"ANssXBsqmX1MszKx2xaQeNYDalI"
+  },
+  "jwt_secret":"fgDngfLn34ts9DH2ksask24AafFfHS"
 }

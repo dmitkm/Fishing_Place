@@ -1,21 +1,28 @@
-fp.controller('loginCtrl', function ($scope,$http,$location,$rootScope,AuthService,FlashService){
+
+angular
+    .module('fp')
+    .controller('loginCtrl',loginController);
+
+
+function loginController($scope,$location,$rootScope,AuthService,FlashService){
     //$rootScope.cur_user = '';
     //$rootScope.error='';
-
 
     $scope.logIn=function(User){
 
 
         AuthService.login(User)
             .then(function(data){
-                $rootScope.cur_user=data.user;
+                console.log(data);
+                AuthService.setToken(data.token);
+                //$rootScope.cur_user=data.user;
                 $location.url('/home');
             })
-            .catch(function(err){
-                FlashService.error(err);
-                //$rootScope.error=err;
-                $location.url('/login');
+            .catch(function(error){
+                if(error){
+                    FlashService.error(error);
+                    $location.url('/login');
+                }
             });
-
     };
-});
+}

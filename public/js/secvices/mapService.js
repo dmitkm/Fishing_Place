@@ -7,13 +7,19 @@ angular
     .factory('mapService',['$rootScope',function($rootScope){
 
         var service={},
-            marker;
+            marker,map;
 
 
         var coords={};
 
+        service.setCenter = function(lat,lng){
+          var coords=new google.maps.LatLng(lat,lng);
+            map.setCenter(coords);
+        }
+
         service.newMap=function(container,options){
             this.map=new google.maps.Map(container,options);
+            map=this.map;
             var _this=this;
             google.maps.event.addListener(this.map,'click',function(e){
                 coords.lat=e.latLng.lat();

@@ -1,0 +1,22 @@
+<nav class="navbar  navbar-full navbar-dark bg-inverse" ng-controller="reportCtrl">
+    <ul>
+        <li>
+            <a class="navbar-link" href="#home">HOME</a>
+        </li>
+    </ul>
+    <div class="pull-md-right pull-sm-right">
+        <a href="#" ng-click="logout()">Выйти</a>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="report_content" ng-controller="reportCtrl">
+            <h1>report: {{report._id}}</h1>
+            <h2>report: {{report.title}}</h2>
+            <p>{{report.description}}</p>
+
+             <!--<ng-galleria source="images"></ng-galleria>-->
+
+        </div>
+    </div>
+</div>

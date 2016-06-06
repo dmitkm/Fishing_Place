@@ -1,4 +1,8 @@
-fp.controller('registrCtrl',  function ($scope,$rootScope,$http,$location,AuthService,FlashService) {
+angular
+    .module('fp')
+    .controller('registrCtrl',registrationController);
+
+function registrationController($scope,$location,AuthService,FlashService) {
     $scope.newUser={
         regname:     "",
         regpassword: "",
@@ -21,4 +25,4 @@ fp.controller('registrCtrl',  function ($scope,$rootScope,$http,$location,AuthSe
             });
     };
 
-});
+}

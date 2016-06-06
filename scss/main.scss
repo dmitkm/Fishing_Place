@@ -1,37 +1,39 @@
-@import "reset.scss";
-@import "bourbon";
-@import "fonts";
+@import 'reset';
+@import 'bourbon';
+@import 'fonts';
 
 
-@import "vars";
-:root{
-	font-family: RobotoRegular,san-serif;
-	font-size:100%;
-	
+@import 'vars';
+
+:root {
+  font-family: RobotoRegular, san-serif;
+  font-size: 100%;
 }
-/* <Write your style here>*/
 
-.wrap_0{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	text-align: center;
-	width: 100%;
-	height: 100%;
-	background: url(../../img/fishing.jpg);
-	-webkit-background-size: cover;
-	     -o-background-size: cover;
-	        background-size: cover;
-	a{
+// <Write your style here>
+
+.wrap_0 {
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ text-align: center;
+ width: 100%;
+ height: 100%;
+ background: url(../../img/fishing.jpg);
+ -webkit-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+
+	a {
 		margin-top: 320px;
 	}
-	
+
 }
 
 
 /* login/register page */
 body{
-	background: #dbdbdb !important;
+ background: #dbdbdb !important;
 }
 .wrap_bg{
 	position: relative;
@@ -46,7 +48,7 @@ body{
 		.card{
 			background: #dbdbdb;
 		}
-		
+
 		width: 25%;
     	position: absolute;
     	top: 50%;
@@ -63,7 +65,7 @@ body{
     		margin: 10px;
     	}
     }
-    
+
 }
 .hide{
 	display: none !important;
@@ -76,7 +78,7 @@ body{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	
+
 	background: black;
 }
 
@@ -108,7 +110,7 @@ body{
 			padding-top: 20px;
 			background: #dbdbdb;
 			height: 100%;
-			
+
 			right: -33%;
 			top: 0;
 			transition: right 0.5s ease;
@@ -125,19 +127,19 @@ body{
 				background: url(../../img/arrows.svg), #dbdbdb;
 				cursor: pointer;
 				transition:transform 0.5s easy-in-out;
-				
+
 			}
 			.add_report_toggle.open{
 				transition:transform 0.5s easy-in-out;
 				transform:rotate(45deg);
-				
+
 			}
 		}
 	}
 }
 .bg-inverse{
 	background: $second_color !important;
-	
+
 	font-family: RobotoRegular,san-serif;
 }
 
@@ -151,7 +153,7 @@ body{
     	display: inline-block;
     	margin: 0;
     	height: 100%;
-    	
+
     	li{
     		display: inline-block;
     		&:nth-child{
@@ -159,7 +161,7 @@ body{
     		}
     	}
     }
-    a{	
+    a{
     	font-size: 1.1rem;
     	color:white;
     	text-decoration: none;
@@ -169,7 +171,7 @@ body{
     		text-shadow: 0 2px 1px grba(255,255,255,.5);
     	}
     }
-	
+
 }
 
 
@@ -190,7 +192,7 @@ body{
 		    transform: translateX(-50%) translateY(-50%);
 		    transition: all 0.3s;
 			svg{
-			
+
 			}
 			.svg-enter{
 		    fill: #811C25;
@@ -254,7 +256,7 @@ body{
 				font-size: 1.6rem;
 				font-family: RobotoRegular,san-serif;
 				font-weight: 600;
-				
+
 				-webkit-transition: -webkit-transform 0.35s;
 				transition: transform 0.35s;
 				-webkit-transform: translate3d(0,20px,0);
@@ -275,22 +277,22 @@ body{
 				    -ms-transform: translate(-50%,-50%);
 				     -o-transform: translate(-50%,-50%);
 				        transform: translate(-50%,-50%);
-				a{	
+				a{
 					z-index: 5;
 					margin: 5px auto;
 					width: 40px;
 					height: 40px;
 					display: block;
 					background: url(../../img/link.svg) no-repeat;
-					
+
 				}
-				p{	
+				p{
 					display: block;
 					color:white;
 					font-size: 0.9rem;
 					font-family: RobotoRegular,san-serif;
 					font-weight: 200;
-					
+
 					text-transform:uppercase;
 				}
 			}
@@ -302,7 +304,7 @@ body{
 				-webkit-background-size: cover;
 				     -o-background-size: cover;
 				        background-size: cover;
-			
+
 			}
 			&:hover{
 				.link{
@@ -315,10 +317,10 @@ body{
 				.title{
 					transform: translate3d(0,0,0);
 				}
-				
+
 			}
 		}
-		
+
 		.usef_data{
 			a{
 				color:$second_color;
@@ -345,6 +347,21 @@ body{
 	}
 	a{
 		color:$second_color;
+	}
+}
+
+/*report page*/
+.gallary{
+	margin-top: 2rem;
+  height: 20rem;
+	.slide{
+		height: 100%;
+		text-align: center;
+		width: 100%;
+		img {
+     background-size: cover;
+		}
+
 	}
 }
 

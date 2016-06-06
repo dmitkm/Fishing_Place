@@ -21,6 +21,8 @@
   "dependencies": {
     "angular": "~1.5.3",
     "bootstrap": "v4",
-    "lodash": "~4.7.0"
+    "lodash": "~4.7.0",
+    "angularjs-geolocation": "~0.1.1",
+    "angular-flickity": "~1.0.2"
   }
 }

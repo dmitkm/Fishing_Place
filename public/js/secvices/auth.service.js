@@ -4,34 +4,62 @@
 
 angular
     .module('fp')
-    .service("AuthService",['$rootScope','$q','$http',function($rootScope,$q,$http){
-        $rootScope.error='';
-        $rootScope.curr_user='';
+    .service("AuthService", function($rootScope,$window,$q,$http,$location){
+
 
         var service={
+            setToken:setToken,
+            getToken:getToken,
             isLoggedIn: isLoggedIn,
-            //getUserStatus: getUserStatus,
-            login: login,
-            logout: logout,
-            register: register
+            currentUser: currentUser,
+            login:login,
+            register:register,
+            logOut:logOut
         };
 
         return service;
+
+        function setToken(token){
+            $window.localStorage['token'] = token;
+        }
+
+        function getToken(){
+            return $window.localStorage['token'];
+        }
+
+        function isLoggedIn(){
+            var token = service.getToken();
+
+            if(token){
+                var user_data = JSON.parse(atob(token.split('.')[1]));
+                return user_data.exp > Date.now()/1000;
+            }else{
+                return false;
+            }
+        }
+
+        function currentUser(){
+            if(service.isLoggedIn()){
+                var token = service.getToken();
+                var user_data = JSON.parse(atob(token.split('.')[1]));
+
+                return user_data.name;
+            }
+        }
 
 
         function login(User){
             var deffered=$q.defer();
 
             $http.post('/login',User)
-             .success(function(data,status){
-                 if(status===200&&data.user){
-                    deffered.resolve(data);
-                 }else{
-                     deffered.reject(data.error);
-                 }
+             .success(function(data){
+                     //console.log(data);
+                     deffered.resolve(data);
+                 //else{
+                 //    deffered.reject(data.error);
+                 //}
              }).error(function(data){
-                //deffered.reject({error:"Something bad happened!Try again!"});
-                deffered.reject(data.error);
+                deffered.reject(data.message);
              });
             return deffered.promise;
         }
@@ -42,6 +70,8 @@ angular
                 .success(function(data,status){
                     if(status===200&&data.status){
                         deffered.resolve(data);
+
+                        $location.path('/login');
                     }else{
                         deffered.reject(data.error);
                     }
@@ -51,18 +81,22 @@ angular
                 });
             return deffered.promise;
         }
-        function logout (){
-            var deffered=$q.defer();
+
+        function logOut (){
+            //var deffered=$q.defer();
+
+            $window.localStorage.removeItem('token');
+
             $http.get('/logout')
                 .success(function(data,status){
                     if(data.status==='logout successfully'){
-                        deffered.resolve(data);
+                      //  deffered.resolve(data);
                     }
                 })
                 .error(function(){
-                    deffered.reject();
+                  //  deffered.reject();
                 });
-            return deffered.promise;
+            // deffered.promise;
         }
-        function isLoggedIn (){}
-    }]);
+
+    });
